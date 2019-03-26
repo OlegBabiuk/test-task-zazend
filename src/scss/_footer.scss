@@ -1,0 +1,18 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  grid-row: -2 / -1;
+  background-color: $drop-nav-bg;
+  nav {
+    padding: 20px;
+    color: $text-drop-nav;
+    text-transform: capitalize;
+    ul {
+      display: flex;
+      justify-content: space-around;
+      a:hover {
+        color: $text-hover;
+      }
+    }
+  }
+}

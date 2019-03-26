@@ -1,0 +1,37 @@
+.main-content {
+  position: relative;
+  z-index: 1;
+  padding: 30px 15px;
+}
+
+.posts-wrapper {
+  padding: 15px;
+}
+
+.post a {
+  display: block;
+  padding: 30px 15px;
+  border: 1px solid transparentize($text-drop-nav, 0.8);
+  border-radius: 20px;
+  margin-bottom: 15px;
+  &:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+  }
+}
+
+.post-viewer {
+  border: 1px solid $text-drop-nav;
+  padding: 20px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.post-comments {
+  border: 1px solid transparentize($text-drop-nav, 0.6);
+  border-radius: 6px;
+  li {
+    border-bottom: 1px solid transparentize($text-drop-nav, 0.8);
+    list-style: disclosure-open inside;
+    padding: 20px;
+  }
+}
