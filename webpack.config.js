@@ -37,7 +37,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env.PUBLIC_URL': JSON.stringify('https://github.com/OlegBabiuk/test-task-zazend/dist'),
+      'process.env.PUBLIC_URL': JSON.stringify('https://github.com/OlegBabiuk/test-task-zazend'),
     }),
   ],
 
