@@ -19,7 +19,7 @@ sagaMiddleware.run(allSagas);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/test-task-zazend">
       <App />
     </BrowserRouter>
   </Provider>,
