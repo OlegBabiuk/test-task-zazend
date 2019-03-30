@@ -1,16 +1,16 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 const PostViewer = (props) => {
-  const { post, isCurrentPostLoaded } = props;
+  const { post, isShowPreloader } = props;
   return (
     <section className="main-content container-wrapper">
       <div className="container">
-        {isCurrentPostLoaded
-          ? (
+        {isShowPreloader
+          ? <h2>Loading...</h2>
+          : (
             <div className="post-wrapper">
               <div className="post-viewer">
                 <h3>{post.postDetail.title}</h3>
@@ -27,7 +27,6 @@ const PostViewer = (props) => {
               </ul>
             </div>
           )
-          : <h2>Loading...</h2>
         }
       </div>
     </section>
@@ -35,8 +34,8 @@ const PostViewer = (props) => {
 };
 
 PostViewer.propTypes = {
-  post: PropTypes.object,
-  isCurrentPostLoaded: PropTypes.bool,
+  post: PropTypes.objectOf,
+  isShowPreloader: PropTypes.bool,
 };
 
 PostViewer.defaultProps = {
@@ -45,12 +44,14 @@ PostViewer.defaultProps = {
     author: {},
     comments: [],
   },
-  isCurrentPostLoaded: false,
+  isShowPreloader: true,
 };
 
+const mapStateToProps = state => ({
+  post: state.currentPost,
+  isShowPreloader: state.isShowPreloader,
+});
+
 export default withRouter(connect(
-  state => ({
-    post: state.currentPost,
-    isCurrentPostLoaded: state.isCurrentPostLoaded,
-  }),
+  mapStateToProps,
 )(PostViewer));

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from './Header';
-import Catalog from './Catalog';
-import Footer from './Footer';
-import PostViewer from './Post-viewer';
+import Header from '../Header';
+import Catalog from '../Catalog';
+import Footer from '../Footer';
+import PostViewer from '../Post-viewer';
 
 const App = () => (
   <div className="app">

@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { NavLink, withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as mobileNavActions from '../../ducks/isOpenMobileNav';
 import MobileNavigation from './Mobile-navigation';
 
 const BottomPanel = (props) => {
@@ -37,7 +36,7 @@ const BottomPanel = (props) => {
             >
               <span />
             </label>
-            <MobileNavigation />
+            <MobileNavigation onToggleMenu={onToggleMenu} />
           </div>
         </div>
       </div>
@@ -55,13 +54,15 @@ BottomPanel.defaultProps = {
   isOpenMobileNav: false,
 };
 
+const mapStateToProps = state => ({
+  isOpenMobileNav: state.isOpenMobileNav,
+});
+
+const mapDispatchToProps = {
+  onToggleMenu: mobileNavActions.toggleMenu,
+};
+
 export default withRouter(connect(
-  state => ({
-    isOpenMobileNav: state.isOpenMobileNav,
-  }),
-  dispatch => ({
-    onToggleMenu() {
-      dispatch({ type: 'MOBILE_NAV_CLICK' });
-    },
-  }),
+  mapStateToProps,
+  mapDispatchToProps,
 )(BottomPanel));

@@ -1,7 +1,6 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 const MobileNavigation = (props) => {
   const { onToggleMenu } = props;
@@ -43,11 +42,4 @@ MobileNavigation.defaultProps = {
   onToggleMenu: () => console.log("onToggleMenu didn't pass"),
 };
 
-export default withRouter(connect(
-  () => ({}),
-  dispatch => ({
-    onToggleMenu() {
-      dispatch({ type: 'MOBILE_NAV_CLICK' });
-    },
-  }),
-)(MobileNavigation));
+export default (MobileNavigation);
