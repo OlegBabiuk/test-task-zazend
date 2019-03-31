@@ -1,0 +1,34 @@
+input,
+li,
+ul,
+div,
+h1,
+p,
+nav,
+main,
+a,
+section,
+footer,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  font-size: inherit;
+  color: inherit;
+  font-family: inherit;
+}

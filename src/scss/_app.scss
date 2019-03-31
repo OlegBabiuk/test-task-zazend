@@ -1,0 +1,17 @@
+.app {
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+  grid-template-rows: auto 1fr auto;
+}
+
+.container-wrapper {
+  display: grid;
+  justify-items: center;
+}
+.container {
+  display: grid;
+  grid-template-columns: minmax(auto, 1140px);
+}
