@@ -48,7 +48,7 @@ export function getPage(page) {
   return { type: SELECTED, page };
 }
 
-export function getTotalPages(number) {
+export function saveTotalPages(number) {
   return { type: COUNTED, number };
 }
 

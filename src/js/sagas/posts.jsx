@@ -1,9 +1,8 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import axios from 'axios';
 import * as postsActions from '../ducks/posts';
 import * as loaderActions from '../ducks/isShowPreloader';
 import * as paginationAction from './pagination';
-import BASE_URL from './api';
+import getDate from '../api';
 
 // Actions
 const GET = 'GET_ALL_POSTS';
@@ -16,10 +15,9 @@ export function getPosts() {
 // Worker saga
 function* fetchAllPosts() {
   yield put(loaderActions.showLoader());
-  const posts = yield axios.get(`${BASE_URL}/posts`)
-    .then(result => (result.data));
+  const posts = yield getDate('/posts');
   yield put(postsActions.postsLoaded(posts));
-  yield put(paginationAction.postsFilter());
+  yield put(paginationAction.postsSelect());
 }
 
 // Watcher saga

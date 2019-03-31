@@ -1,15 +1,16 @@
+/* eslint-disable no-plusplus */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as paginationActions from '../../ducks/pagination';
-import { postsFilter } from '../../sagas/pagination';
+import { postsSelect } from '../../sagas/pagination';
 
 const Pagination = ({
   totalPages,
   nextPage,
   prevPage,
   getPage,
-  filter,
+  postsDisplay,
   currentPage,
 }) => {
   const btns = Array(totalPages).fill(null);
@@ -22,7 +23,7 @@ const Pagination = ({
             type="button"
             onClick={() => {
               prevPage();
-              filter();
+              postsDisplay();
             }}
           >
             <i className="fas fa-angle-double-left" />
@@ -37,7 +38,7 @@ const Pagination = ({
                   type="button"
                   onClick={() => {
                     getPage(index + 1);
-                    filter();
+                    postsDisplay();
                   }}
                 >
                   {index + 1}
@@ -49,7 +50,7 @@ const Pagination = ({
             type="button"
             onClick={() => {
               nextPage();
-              filter();
+              postsDisplay();
             }}
           >
             <i className="fas fa-angle-double-right" />
@@ -64,7 +65,7 @@ Pagination.propTypes = {
   nextPage: PropTypes.func.isRequired,
   prevPage: PropTypes.func.isRequired,
   getPage: PropTypes.func.isRequired,
-  filter: PropTypes.func.isRequired,
+  postsDisplay: PropTypes.func.isRequired,
   totalPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
 };
@@ -77,7 +78,7 @@ const mapDispatchToProps = {
   nextPage: paginationActions.nextPage,
   prevPage: paginationActions.prevPage,
   getPage: paginationActions.getPage,
-  filter: postsFilter,
+  postsDisplay: postsSelect,
 };
 export default connect(
   mapStateToProps,

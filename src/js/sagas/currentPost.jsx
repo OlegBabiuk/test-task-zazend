@@ -1,8 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import axios from 'axios';
 import * as postActions from '../ducks/currentPost';
 import * as loaderActions from '../ducks/isShowPreloader';
-import BASE_URL from './api';
+import getDate from '../api';
 
 // Actions
 const GET = 'GET_POST';
@@ -16,12 +15,9 @@ export function getPost(id) {
 export function* fetchPost(post) {
   yield put(loaderActions.showLoader());
   const postId = post.id;
-  const postDetail = yield axios.get(`${BASE_URL}/posts/${postId}`)
-    .then(result => (result.data));
-  const author = yield axios.get(`${BASE_URL}/users/${postDetail.userId}`)
-    .then(result => (result.data));
-  const comments = yield axios.get(`${BASE_URL}/comments?postId=${postId}`)
-    .then(result => (result.data));
+  const postDetail = yield getDate('/posts/', postId);
+  const author = yield getDate('/users/', postDetail.userId);
+  const comments = yield getDate('/comments?postId=', postId);
   yield put(postActions.postLoaded({ postDetail, author, comments }));
   yield put(loaderActions.hiddenLoader());
 }
