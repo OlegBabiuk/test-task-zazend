@@ -11,15 +11,31 @@ const PostViewer = (props) => {
         {isShowPreloader
           ? <h2>Loading...</h2>
           : (
-            <div className="post-wrapper">
+            <div className="post-viewer-wrapper">
               <div className="post-viewer">
                 <h3>{post.postDetail.title}</h3>
-                <h5>{post.author.name}</h5>
+                <div className="post-viewer_info">
+                  <h5 className="post-viewer_info__author">
+                    {post.author.name}
+                  </h5>
+                  <h5 className="post-viewer_info__comments">
+                    {post.comments.length}
+                    <span>Comments</span>
+                  </h5>
+                </div>
                 <p>{post.postDetail.body}</p>
               </div>
               <ul className="post-comments">
+                <p className="post-comments_info">
+                  <span>This Post Has</span>
+                  {post.comments.length}
+                  <span>Comments</span>
+                </p>
                 {post.comments.map(comment => (
-                  <li key={comment.id}>
+                  <li
+                    key={comment.id}
+                    className="post-comments_item"
+                  >
                     <h4>{comment.name}</h4>
                     <p>{comment.body}</p>
                   </li>

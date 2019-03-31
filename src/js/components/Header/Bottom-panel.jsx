@@ -28,7 +28,7 @@ const BottomPanel = (props) => {
               id="navigation"
               autoComplete="off"
               checked={isOpenMobileNav}
-              onChange={() => onToggleMenu()}
+              onChange={onToggleMenu}
             />
             <label
               htmlFor="navigation"

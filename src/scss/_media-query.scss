@@ -16,6 +16,17 @@
   .mobile-nav {
     display: flex;
   }
+
+  .posts-wrapper ul {
+    grid-template-columns: 1fr;
+  }
+  .pagination nav {
+    transform: scale(1.5);
+    justify-content: center;
+    li {
+      display: none;
+    } 
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -25,5 +36,14 @@
 }
 
 @media screen and (max-width: 540px) {
+  .post-viewer {
+    margin-bottom: 30px;
+  }
+  .post-comments h4 {
+    margin: 10px 0;
+  }
 
+  .post-comments_info::after {
+    border-bottom: none;
+  }
 }

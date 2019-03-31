@@ -7,6 +7,7 @@ import posts from '../ducks/posts';
 import currentPost from '../ducks/currentPost';
 import isOpenMobileNav from '../ducks/isOpenMobileNav';
 import isShowPreloader from '../ducks/isShowPreloader';
+import pagination from '../ducks/pagination';
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -15,6 +16,7 @@ const configureStore = () => {
     currentPost,
     isOpenMobileNav,
     isShowPreloader,
+    pagination,
   });
 
   const store = createStore(

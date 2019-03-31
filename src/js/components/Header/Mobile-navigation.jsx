@@ -9,22 +9,26 @@ const MobileNavigation = (props) => {
       <nav className="mobile-nav-list">
         <ul>
           <li>
-            <button type="submit" onClick={() => onToggleMenu()}>
-              X
-            </button>
+            <i
+              className="fas fa-times-circle"
+              onKeyPress={onToggleMenu}
+              role="button"
+              tabIndex="0"
+              onClick={onToggleMenu}
+            />
           </li>
           <li>
-            <NavLink exact to="/" onClick={() => onToggleMenu()}>
+            <NavLink exact to="/" onClick={onToggleMenu}>
               home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" onClick={() => onToggleMenu()}>
+            <NavLink to="/contact" onClick={onToggleMenu}>
               contact
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" onClick={() => onToggleMenu()}>
+            <NavLink to="/about" onClick={onToggleMenu}>
               about
             </NavLink>
           </li>

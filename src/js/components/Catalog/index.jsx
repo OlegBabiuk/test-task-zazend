@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as postsActions from '../../sagas/posts';
 import * as postActions from '../../sagas/currentPost';
+import Pagination from './Pagination';
 
 
 class Catalog extends React.Component {
@@ -24,18 +25,19 @@ class Catalog extends React.Component {
                 <ul>
                   {posts.map(post => (
                     <li key={post.id} className="post">
+                      <h3>
+                        {post.title}
+                      </h3>
+                      <p>
+                        {post.body}
+                      </p>
                       <Link
                         to={`posts/${post.id}`}
                         onClick={() => {
                           getPost(post.id);
                         }}
                       >
-                        <h3>
-                          {post.title}
-                        </h3>
-                        <p>
-                          {post.body}
-                        </p>
+                        Read More
                       </Link>
                     </li>
                   ))}
@@ -43,6 +45,7 @@ class Catalog extends React.Component {
               </div>
             )}
         </div>
+        <Pagination />
       </section>
     );
   }
@@ -51,19 +54,19 @@ class Catalog extends React.Component {
 Catalog.propTypes = {
   getPosts: PropTypes.func,
   getPost: PropTypes.func,
-  posts: PropTypes.arrayOf,
+  posts: PropTypes.array.isRequired,
   isShowPreloader: PropTypes.bool,
 };
 
 Catalog.defaultProps = {
-  getPosts: () => console.log("getPosts didn't pass"),
-  getPost: () => console.log("getPost didn't pass"),
-  posts: [],
+  getPosts() { console.log("getPosts didn't pass"); },
+  getPost() { console.log("getPost didn't pass"); },
+  // posts: [],
   isShowPreloader: true,
 };
 
 const mapStateToProps = state => ({
-  posts: state.posts,
+  posts: state.posts.visiblePost,
   isShowPreloader: state.isShowPreloader,
 });
 
